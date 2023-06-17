@@ -16,7 +16,7 @@ provider "azurerm" {
 module "azurerm_resource_group" {
   source = "./modules/resource_group"
 
-  rgname = var.rgname
+  rgname = join("-",["rg-aks",var.location])
   location = var.location
 }
 
