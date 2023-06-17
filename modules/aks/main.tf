@@ -5,7 +5,7 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
   dns_prefix          = "spotaks"
 
   default_node_pool {
-  name                  = "aks-spot-node-pool"
+  name                  = "aksspotpool"
 #   availability_zone     = "1"
   node_count            = 1
   vm_size               = "Standard_B2ms"
