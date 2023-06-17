@@ -1,7 +1,7 @@
 resource "azurerm_kubernetes_cluster" "aks-spot" {
   name                = "aks-spot"
-  location            = azurerm_resource_group.aks-spot-rg.location
-  resource_group_name = azurerm_resource_group.aks-spot-rg.name
+  location            = var.location
+  resource_group_name = var.rgname
   dns_prefix          = "spotaks"
 
   default_node_pool {
