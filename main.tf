@@ -15,8 +15,14 @@ provider "azurerm" {
 
 module "azurerm_resource_group" {
   source = "./modules/resource_group"
+
+  rgname = var.rgname
+  location = var.location
 }
 
 module "azurerm_aks" {
   source = "./modules/aks"
+
+  resource_group_name = module.resource_group.rgname
+  location = var.location
 }

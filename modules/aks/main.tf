@@ -22,16 +22,12 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "aks-spot-pool" {
-  name                  = "aks-spot-node-pool"
-  availability_zone     = "1"
-  node_count            = 3
-  vm_size               = "Standard_D2s_v3"
-  spot_instance         = true
-  eviction_policy       = "Deallocate"
-
-  # Other node pool configuration
-}
+# resource "azurerm_kubernetes_cluster_node_pool" "aks-spot-pool" {
+#   name                  = "aks-spot-node-pool"
+#   node_count            = 3
+#   vm_size               = "Standard_D2s_v3"
+#   eviction_policy       = "Deallocate"
+# }
 
 output "client_certificate" {
   value     = azurerm_kubernetes_cluster.aks-spot.kube_config.0.client_certificate
