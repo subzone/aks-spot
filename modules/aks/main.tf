@@ -6,11 +6,11 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
 
   default_node_pool {
   name                  = "aks-spot-node-pool"
-  availability_zone     = "1"
-  node_count            = 3
-  vm_size               = "Standard_D2s_v3"
-  spot_instance         = true
-  eviction_policy       = "Deallocate"
+#   availability_zone     = "1"
+  node_count            = 1
+  vm_size               = "Standard_B2ms"
+#   spot_instance         = true
+#   eviction_policy       = "Deallocate"
   }
 
   identity {
@@ -29,13 +29,3 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
 #   eviction_policy       = "Deallocate"
 # }
 
-output "client_certificate" {
-  value     = azurerm_kubernetes_cluster.aks-spot.kube_config.0.client_certificate
-  sensitive = true
-}
-
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.aks-spot.kube_config_raw
-
-  sensitive = true
-}
