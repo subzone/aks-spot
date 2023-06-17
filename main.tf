@@ -16,3 +16,7 @@ provider "azurerm" {
 module "azurerm_resource_group" {
   source = "./modules/resource_group"
 }
+
+module "azurerm_aks" {
+  source = "./modules/aks"
+}

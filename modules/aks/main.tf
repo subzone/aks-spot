@@ -1,7 +1,7 @@
 resource "azurerm_kubernetes_cluster" "aks-spot" {
   name                = "aks-spot"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.aks-spot-rg.location
+  resource_group_name = azurerm_resource_group.aks-spot-rg.name
   dns_prefix          = "spotaks"
 
   default_node_pool {
@@ -22,7 +22,7 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "example" {
+resource "azurerm_kubernetes_cluster_node_pool" "aks-spot-pool" {
   name                  = "aks-spot-node-pool"
   availability_zone     = "1"
   node_count            = 3
