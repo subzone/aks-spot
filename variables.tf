@@ -1,4 +1,4 @@
 variable "location" {
-    type = String
+    type = string
     default = "westeurope"
 }
