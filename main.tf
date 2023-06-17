@@ -23,6 +23,6 @@ module "azurerm_resource_group" {
 module "azurerm_aks" {
   source = "./modules/aks"
 
-  resource_group_name = module.resource_group.rgname
+  resource_group_name = module.azurerm_resource_group.rgname
   location = var.location
 }
