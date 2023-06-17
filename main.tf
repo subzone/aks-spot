@@ -13,7 +13,3 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "aks-spot-rg" {
-    name = join("-",["rg-aks-weeu",var.location])
-    location = var.location 
-}
