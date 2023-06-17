@@ -13,3 +13,6 @@ provider "azurerm" {
   features {}
 }
 
+module "azurerm_resource_group" {
+  source = "./modules/resource_group"
+}
