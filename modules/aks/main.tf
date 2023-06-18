@@ -33,20 +33,20 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
 
 resource "azurerm_kubernetes_cluster_node_pool" "nodepool_cpu_spot" {
   enable_auto_scaling   = true
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks_spot.id
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks-spot.id
   max_count             = 3
   min_count             = 1
   mode                  = "User"
   name                  = "cpuspot"
   #orchestrator_version  = data.azurerm_kubernetes_service_versions.current.latest_version
-  orchestrator_version  = azurerm_kubernetes_cluster.aks_spot.kubernetes_version
+  orchestrator_version  = azurerm_kubernetes_cluster.aks-spot.kubernetes_version
   os_disk_size_gb       = 128
   os_type               = "Linux" # Default is Linux, we can change to Windows
   vm_size               = "standard_B2ms" # "Standard_NC6_Promo" Promo is not available for Spot instances
   priority              = "Spot"  # Default is Regular, we can change to Spot with additional settings like eviction_policy, spot_max_price, node_labels and node_taints
   spot_max_price        = "0.5" # Set to -1 to disable the max_price (not eviction based on price)
   eviction_policy       = "Delete" # Deallocate will count against your quota and there is no guarantee the node can be realocated
-  vnet_subnet_id        = azurerm_subnet.aks-subnet.id  
+#   vnet_subnet_id        = azurerm_subnet.aks-subnet.id  
   node_taints = ["kubernetes.azure.com/scalesetpriority=spot:NoSchedule"]
   node_labels = {
     "nodepool-type" = "user"
