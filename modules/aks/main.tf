@@ -50,14 +50,14 @@ resource "azurerm_kubernetes_cluster_node_pool" "nodepool_cpu_spot" {
   node_taints = ["kubernetes.azure.com/scalesetpriority=spot:NoSchedule"]
   node_labels = {
     "nodepool-type" = "user"
-    "environment"   = var.environment
+    "environment"   = "development"
     "nodepoolos"    = "linux"
     "sku"           = "cpu"    
     "kubernetes.azure.com/scalesetpriority" = "spot"
   }
   tags = {
     "nodepool-type" = "user"
-    "environment"   = var.environment
+    "environment"   = "development"
     "nodepoolos"    = "linux"
     "sku"           = "cpu"    
   }
