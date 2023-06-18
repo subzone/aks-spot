@@ -22,14 +22,14 @@ resource "azurerm_kubernetes_cluster" "aks-spot" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "aks-spot-pool" {
-  name                  = "aks-spot-node-pool"
-  node_count            = 3
-  vm_size               = "Standard_B2ms"
+# resource "azurerm_kubernetes_cluster_node_pool" "aks-spot-pool" {
+#   name                  = "aks-spot-node-pool"
+#   node_count            = 3
+#   vm_size               = "Standard_B2ms"
   
-  spot_max_price = ""
-  eviction_policy       = "Deallocate"
-}
+#   spot_max_price = ""
+#   eviction_policy       = "Deallocate"
+# }
 
 resource "azurerm_kubernetes_cluster_node_pool" "nodepool_cpu_spot" {
   enable_auto_scaling   = true
@@ -39,7 +39,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "nodepool_cpu_spot" {
   mode                  = "User"
   name                  = "cpuspot"
   #orchestrator_version  = data.azurerm_kubernetes_service_versions.current.latest_version
-  orchestrator_version  = azurerm_kubernetes_cluster.aks_cluster.kubernetes_version
+  orchestrator_version  = azurerm_kubernetes_cluster.aks_spot.kubernetes_version
   os_disk_size_gb       = 128
   os_type               = "Linux" # Default is Linux, we can change to Windows
   vm_size               = "standard_B2ms" # "Standard_NC6_Promo" Promo is not available for Spot instances
